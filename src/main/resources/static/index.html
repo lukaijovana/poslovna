@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="routerApp">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>index</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	
+    	
+	<!-- AngularJS ============================================================= -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
+	<script	src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="/popover/angular-popover.js"></script>
+	<link rel="stylesheet" type="text/css" href="stilovi.css">
+	<link rel="stylesheet" type="text/css" href="/popover/angular-popover.css">
+
+<script src="app.js"></script>
+
+<script src = "/analyticsOfStatements/analyticsOfStatementsController.js"></script>
+<script src = "/analyticsOfStatements/analyticsOfStatementsService.js"></script>
+
+<script src = "/bank/bankController.js"></script>
+<script src = "/bank/bankService.js"></script>
+
+<script src = "/businessActivityCode/businessActivityCodeController.js"></script>
+<script src = "/businessActivityCode/businessActivityCodeService.js"></script>
+
+<script src = "/country/countryController.js"></script>
+<script src = "/country/countryService.js"></script>
+
+<script src = "/client/clientController.js"></script>
+<script src = "/client/clientService.js"></script>
+
+<script src = "/currency/currencyController.js"></script>
+<script src = "/currency/currencyService.js"></script>
+
+<script src = "/currencyRate/currencyRateController.js"></script>
+<script src = "/currencyRate/currencyRateService.js"></script>
+
+<script src = "/dailyAccountBalance/dailyAccountBalanceController.js"></script>
+<script src = "/dailyAccountBalance/dailyAccountBalanceService.js"></script>
+
+<script src = "/exchageRateList/exchageRateListController.js"></script>
+<script src = "/exchageRateList/exchageRateListService.js"></script>
+
+<script src = "/interbankTransfer/interbankTransferController.js"></script>
+<script src = "/interbankTransfer/interbankTransferService.js"></script>
+
+<script src = "/itemTransfer/itemTransferController.js"></script>
+<script src = "/itemTransfer/itemTransferService.js"></script>
+
+<script src = "/legalEntity/legalEntityController.js"></script>
+<script src = "/legalEntity/legalEntityService.js"></script>
+
+<script src = "/legalEntityAccount/legalEntityAccountController.js"></script>
+<script src = "/legalEntityAccount/legalEntityAccountService.js"></script>
+
+
+<script src = "/nationalBank/nationalBankController.js"></script>
+<script src = "/nationalBank/nationalBankService.js"></script>
+
+<script src = "/paymentType/paymentTypeController.js"></script>
+<script src = "/paymentType/paymentTypeService.js"></script>
+
+<script src = "/place/placeController.js"></script>
+<script src = "/place/placeService.js"></script>
+
+<script src = "/suspension/suspensionController.js"></script>
+<script src = "/suspension/suspensionService.js"></script>
+
+
+
+<!-- script src = "/caSignedCertificate/caSignedCertificateController.js"></script>
+<script src = "/caSignedCertificate/caSignedCertificateService.js"></script>
+
+<script src = "/findExistingCertificate/findCertificateController.js"></script>
+<script src = "/findExistingCertificate/findCertificateService.js"></script>
+-->
+</head>
+
+
+<body class="bg">
+
+<nav class="navbar " role="navigation" style="background-color: #55efc4; display: flex !important;"> 
+<ul class="nav navbar-nav navigacija">
+	<li><a ui-sref="analyticsOfStatements">Analytics of statements</a></li> 
+	<li><a ui-sref="bank">Bank</a></li> 
+	<li><a ui-sref="businessActivityCode">Business activity code</a></li> 
+	<li><a ui-sref="client">Client</a></li>
+	<li><a ui-sref="country">Country</a></li> 
+	<li><a ui-sref="currency">Currency</a></li> 
+	<li><a ui-sref="currencyRate">Currency rate</a></li> 
+	<li><a ui-sref="dailyAccountBalance">Daily account balance</a></li> 
+	<li><a ui-sref="exchageRateList">Exchage rate list</a></li> 
+	<li><a ui-sref="interbankTransfer">Interbank transfer</a></li> 
+	<li><a ui-sref="itemTransfer">Item transfer</a></li>
+	<li><a ui-sref="legalEntity">Legal entity</a></li>
+	<li><a ui-sref="legalEntityAccount">Legal entity account</a></li>    
+	<li><a ui-sref="paymentType">Payment type</a></li> 
+	<li><a ui-sref="place">Place</a></li> 
+	<li><a ui-sref="suspension">Suspension</a></li> 
+</ul>
+ </nav>
+    
+    
+     <div>
+		<div ui-view></div>
+	</div>
+    
+    
+</body>
+</html>

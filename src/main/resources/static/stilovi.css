@@ -1,0 +1,151 @@
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%; /* Could be more or less, depending on screen size */
+}
+.modal-content1 {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%; /* Could be more or less, depending on screen size */
+}
+.modal-content2 {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 45%; /* Could be more or less, depending on screen size */
+}
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.selected {
+    background-color:blue;
+    color:white;
+    font-weight:bold;
+}
+
+
+.search, .refresh, .back, .help, .first, .previous, .next, .last, .add, .delete, .nextForm, .import, .export {
+	cursor:pointer;
+    border:none;
+    width:34px;
+    height:34px;
+    padding-bottom: 40px;
+    padding-left: 10px;
+}
+
+.search {
+	background: url(./icons_34x34/search.jpg) no-repeat;
+}
+.refresh {
+	background: url(./icons_34x34/refresh.jpg) no-repeat;
+}
+.back {
+	background: url(./icons_34x34/back.jpg) no-repeat;
+}
+.help {
+	background: url(./icons_34x34/help.jpg) no-repeat;
+}
+.first {
+	background: url(./icons_34x34/first.jpg) no-repeat;
+}
+.previous {
+	background: url(./icons_34x34/previous.jpg) no-repeat;
+}
+.next {
+	background: url(./icons_34x34/next.jpg) no-repeat;
+}
+.last {
+	background: url(./icons_34x34/last.jpg) no-repeat;
+}
+.add {
+	background: url(./icons_34x34/add.jpg) no-repeat;
+}
+.delete {
+	background: url(./icons_34x34/delete.jpg) no-repeat;
+}
+.export {
+	background: url(./icons_34x34/process.jpg) no-repeat;
+}
+.nextForm {
+	background: url(./icons_34x34/nextForm.jpg) no-repeat;
+}
+.import {
+	background: url(./icons_34x34/import.jpg) no-repeat;
+}
+
+.toolbar{
+	padding-left: 20px;
+}
+
+#container > div
+{
+    display: inline-block;
+    border: solid 1px #000;
+}
+
+
+.dropbtn {
+	float: left;
+    overflow: hidden;
+    font-size: 16px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+input.ng-dirty.ng-valid:focus {
+	background-color: #bbffbb;
+}
+
+input.ng-dirty.ng-invalid:focus  {
+    background-color: pink;
+}
+
+.navigacija {
+	color: white !important;
+	display: flex;
+}
+
+a {
+	color: white;
+	font-weight: bold;
+}
+
