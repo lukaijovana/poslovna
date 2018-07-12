@@ -1,0 +1,45 @@
+ <div id = "options">
+	
+	 <div class="toolbar">
+	<button class = "search"></button>
+	<button class = "refresh"></button>
+	<button class = "back"></button>
+	<button class = "help"></button>
+	&nbsp&nbsp
+	<button class = "first" ng-click = "firstone()">
+	</button>
+	<button class = "previous" ng-click = "previous(entity)"></button>
+	<button class = "next" ng-click = "nextNavigation(entity)"></button>
+	<button class = "last"  ng-click = "lastone()"></button>
+	&nbsp&nbsp
+	<button ui-sref="nationalBank.add" class = "add"></button>
+	<button class = "delete" ng-click = "delete()"></button>
+	&nbsp&nbsp
+	<button class = "nextForm"></button>
+</div>	
+	<div>
+	
+	<table class="table table-bordered">
+		<tr>
+			<th>id</th>
+			<th>uobicajeno ime</th>
+			<th>drzavu</th>
+			<th>organizacija</th>
+			<th>organizaciona jedinica</th>
+			<th>email</th>
+		</tr>
+		<tr data-ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
+			<td>{{entity.id}}</td>
+			<td>{{entity.commonName}}</td>
+			<td>{{entity.country}}</td>
+			<td>{{entity.organization}}</td>
+			<td>{{entity.organizationUnit}}</td>
+			<td>{{entity.email}}</td>
+			
+		</tr>
+	</table>
+</div> 
+</div>
+<div>
+    <div ui-view></div>
+</div>
