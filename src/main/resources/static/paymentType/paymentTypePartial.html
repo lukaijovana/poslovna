@@ -1,0 +1,60 @@
+ <div id = "options">
+	
+	 <div class="toolbar">
+	<button class = "search" ui-sref = ".search" ng-click = "deselect()"></button>
+	<button class = "refresh" ui-sref = "paymentType" ng-click = "refresh()"></button>
+	<button class = "back"></button>
+	<button class = "help"></button>
+	&nbsp&nbsp
+	<button class = "first" ng-click = "firstone()">
+	</button>
+	<button class = "previous" ng-click = "previous(entity)"></button>
+	<button class = "next" ng-click = "nextNavigation(entity)"></button>
+	<button class = "last"  ng-click = "lastone()"></button>
+	&nbsp&nbsp
+	<button ui-sref="paymentType.add" ng-click = "deselect()" class = "add"></button>
+	<button class = "delete" ng-click = "delete()"></button>
+	&nbsp&nbsp
+	<button class = "nextForm" ng-click = "next()"></button>
+</div>	
+<div>
+		<table class="table table-bordered">
+		<tr>
+			<th>Sifra</th>
+			<th>Ime vrste placanja</th>
+		</tr>
+		<tr data-ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
+			<td>{{entity.code}}</td>
+			<td>{{entity.nameOfPaymentType}}</td>
+			
+		</tr>
+	</table>
+	<div class = "row" ng-show = "showUpdateForm">
+		<form class="form-horizontal" name= "form" ng-submit = "saveChanges()" method = "post">
+		
+			<div class = "form-group">
+				<label class = "col-md-2 control-label" for = "updatepttNumber">Sifra:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" type = "text" name = "updateptC" id = "updateptC" ng-model = "updatedEntity.code" class="form-control " />
+				</div>
+			</div>
+			<div class = "form-group">
+				<label class = "col-md-2 control-label" for = "updateLN"> Ime vrste placanja:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" type = "text" name = "updateLN" id = "updateLN" ng-model = "updatedEntity.nameOfPaymentType" class="form-control " />
+				</div>
+			</div>
+			
+			<div class = "form-group">
+				<label class = "col-md-2 control-label"></label>
+				<div class = "col-md-2">
+					<span><button type = "submit" class = "btn btn-success" >Azuriraj</button></span>
+				</div>
+			</div>
+		</form>
+</div>
+</div>
+
+<div>
+    <div ui-view></div>
+    </div>

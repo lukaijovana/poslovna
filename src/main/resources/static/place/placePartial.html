@@ -1,0 +1,103 @@
+ <div id = "options">
+	
+	 <div class="toolbar btn-group" id = "container">
+	<button class = "search" ui-sref = ".search" ng-click = "deselect()"></button>
+	<button class = "refresh" ui-sref = "place" ng-click = "refresh()"></button>
+	<button class = "back" ng-click = "back()"></button>
+	<button class = "help"></button>
+	&nbsp&nbsp
+	<button class = "first" ng-click = "firstone()">
+	</button>
+	<button class = "previous" ng-click = "previous(entity)"></button>
+	<button class = "next" ng-click = "nextNavigation(entity)"></button>
+	<button class = "last"  ng-click = "lastone()"></button>
+	&nbsp&nbsp
+	<button ui-sref="place.add" ng-click = "deselect()" class = "add"></button>
+	<button class = "delete" ng-click = "delete()"></button>
+	&nbsp&nbsp
+	<button class="nextForm" data-toggle="dropdown"></button>
+			<ul class="dropdown-menu">
+				<li><button class="btn btn-primary" ng-click="nextClient()">Client</button></li>
+				<li><button class="btn btn-primary" ng-click="nextAnalyticsOfStatements()">Analitika izvoda</button></li>
+				
+			</ul>
+
+</div>	
+	
+<div>
+	<table class="table table-bordered">
+		<tr>
+			<th>Ptt broj</th>
+			<th>Ime</th>
+			<th>Drzava</th>
+		</tr>
+		<tr data-ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
+			<td>{{entity.pttNumber}}</td>
+			<td>{{entity.name}}</td>
+			<td>{{entity.country.name}}</td>
+		</tr>
+	</table>
+	
+	<div class = "row" ng-show = "showUpdateForm">
+		<form class="form-horizontal" name= "form" ng-submit = "saveChanges()" method = "post">
+		
+			<div class = "form-group">
+				<label class = "col-md-2 control-label" for = "updatepttNumber">PTT broj:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" type = "text" name = "updatepttNumber" id = "updatepttNumber" ng-model = "updatedEntity.pttNumber" class="form-control " />
+				</div>
+			</div>
+			<div class = "form-group">
+				<label class = "col-md-2 control-label" for = "updateLN"> Ime:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" type = "text" name = "updateLN" id = "updateLN" ng-model = "updatedEntity.name" class="form-control " />
+				</div>
+			</div>
+			
+			<div class = "form-group">
+				<label class = "col-md-2 control-label" for = "entityUCountry">Mesto drzava:</label>
+				<div class = "col-md-2">
+				<input type = "text" name = "entityUCountry" id = "entityUCountry" ng-model = "updatedEntity.country.name" class="form-control" readonly/>
+				</div>
+				<span><button type = "button" ng-click = "showModalSearch()" class = "btn btn-primary" >Selektuj drzavu</button></span>
+			</div>
+			
+			
+			<div class = "form-group">
+				<label class = "col-md-2 control-label"></label>
+				<div class = "col-md-2">
+					<span><button type = "submit" class = "btn btn-success" >Azuriraj</button></span>
+				</div>
+			</div>
+		</form>
+</div>
+</div>
+
+<div>
+    <div ui-view></div>
+   </div>
+   
+   
+   
+<div id="myModalSearch" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Countries</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllCountries() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Sifra:</th>
+					<th>Ime:</th>
+				</tr>
+				<tr class="state" ng-repeat="country in countries" ng-click = "setSelectedCountryUpdate(country)" ng-class = "{selected:country === updatedEntity.country}">
+					<td>
+						{{country.country_code}}
+					</td>
+			
+					<td>
+						{{country.name}}
+					</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeModal() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	
