@@ -1,0 +1,86 @@
+ <div id = "options">
+	
+	
+	 <div class="toolbar">
+		<button class = "search" ui-sref = ".search" ng-click = "deselect()"></button>
+		<button class = "refresh" ui-sref = "analyticsOfStatements" ng-click = "refresh()"></button>
+		<button class = "back" ng-click = "back()"></button>
+		<button class = "help"></button>
+		&nbsp&nbsp
+		<button class = "first" ng-click = "firstone()">
+		</button>
+		<button class = "previous" ng-click = "previous(entity)"></button>
+		<button class = "next" ng-click = "nextNavigation(entity)"></button>
+		<button class = "last"  ng-click = "lastone()"></button>
+		&nbsp&nbsp
+		<button class = "nextForm" ng-click = "next()"></button>
+		<!-- button class = "delete"></button-->
+		&nbsp&nbsp
+		<button ng-click = "showXmlFilesModal()" class = "import"></button>
+	</div>	
+
+	<div style="overflow-x:auto;">
+		<table class="table table-bordered" >
+		<tr>
+			<th>Vrsta placanja</th>
+			<th>Originator duznika</th>
+			<th>Svrha placanja</th>
+			<th>Primalac kredita</th>
+			<th>Datum prijema</th>
+			<th>Datum valute</th>
+			<th>Racun duznika</th>
+			<th>Model zadataka</th>
+			<th>Zadaci referentnog broja</th>
+			<th>Racun kreditora</th>
+					
+			<th>Model odobrenja</th>
+			<th>Kreditor referentnog broja</th>
+			<th>Hitno</th>
+			<th>Suma</th>
+			
+			<th>Tip greske</th>
+			<th>Status</th>
+			
+		</tr>
+		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
+			<td>{{entity.paymentType.nameOfPaymentType}}</td>
+			<td>{{entity.debtor_originator}}</td>
+			<td>{{entity.purposeOfPayment}}</td>
+			<td>{{entity.creditor_recipient}}</td>
+			<td>{{entity.dateOfReceipt}}</td>
+			<td>{{entity.currencyDate}}</td>
+			<td>{{entity.debtorAccount}}</td>
+			<td>{{entity.modelAssigments}}</td>
+			<td>{{entity.referenceNumberAssigments}}</td>
+			<td>{{entity.accountCreditor}}</td>
+			
+			<td>{{entity.modelApproval}}</td>
+			<td>{{entity.referenceNumberCreditor}}</td>
+			<td ng-show = "entity.emergency">YES</td>
+			<td ng-hide = "entity.emergency">NO</td>
+			<td>{{entity.sum}}</td>
+			<td>{{entity.typeOfMistake}}</td>
+			<td>{{entity.status}}</td>
+			
+		</tr>
+	</table>
+	</div>
+
+	<div id="xmlFilesModal" class="modal">
+	  	<div class="modal-content1">
+	    	<h3>Analiza izvoda</h3><hr/><br/>
+	    
+	    	<table ng-init = findXmlFiles() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr class="state" ng-repeat="file in xmlFiles" >
+					<td align = "center" valign = "middle">{{file}}</td>
+					<td><span><button class = "btn btn-success btn-block" ng-click = "importFile(file)">Import</button></span></td>
+				</tr>
+			</table>
+			<center><button type = "button" ng-click=closeXmlFilesModal() class="btn btn-default navbar-btn">OK</button></center>		
+	 	</div>
+	</div>
+
+
+<div>
+    <div ui-view></div>
+</div>

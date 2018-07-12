@@ -1,0 +1,269 @@
+<br/><br/>
+<form class="form-horizontal" ng-submit = "add()" method="post">
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Broj artikla:</label>
+			<div class = "col-md-2">
+				<input ng-min="3" ng-max="3"  class="form-control input-sm" ng-model="$parent.entity.itemNumber" type="text"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Originator duznika:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.debtor_originator" type="text"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Svrha placanja:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.purposeOfPayment" type="text"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Primalac kredita:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.creditor_recipient" type="text"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Datum prijema:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.dateOfReceipt" type="date"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Datum valute:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.currencyDate" type="date"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Racun duznika:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.debtorAccount" type="text"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Model zadataka:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.modelAssigments" type="number"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Zaduzenja referentnog broja:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.referenceNumberAssigments" type="text"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Kreditor racuna:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.accountCreditor" type="text"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Model odobrenja:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.modelApproval" type="text"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Kreditor referentnog broja:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.referenceNumberCreditor" type="text"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Hitno:</label>
+			<div class = "col-md-2">
+				<input type="checkbox" checked="checked" ng-model="$parent.entity.emergency"/>
+			</div>
+		</div>
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Suma:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.sum" type="number"> 
+			</div>
+		</div>
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Tip greske:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.typeOfMistake" type="number"> 
+			</div>
+		</div>
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Status:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.status" type="text"> 
+			</div>
+		</div>			
+		
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "entityDailyAccountBalance">Dnevno stanje racuna:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "entityDailyAccountBalance" id = "entityDailyAccountBalance" ng-model = "selectedDailyAccountBalanceDate" class="form-control" readonly/>
+		</div>
+		<span><button type = "button" ng-click = "showDailyAccountBalanceModal()" class = "btn btn-primary" >Selektuj dnevno stanje racuna</button></span>
+	</div>
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "entityPaymentType">Vrsta placanja:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "entityPaymentType" id = "entityPaymentType" ng-model = "$parent.entity.paymentType.nameOfPaymentType" class="form-control" readonly/>
+		</div>
+		<span><button type = "button" ng-click = "showPaymentTypeModal()" class = "btn btn-primary" >Selektuj vrstu placanja</button></span>
+	</div>
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "entityPaymentCurrency">Valuta placanja:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "entityPaymentCurrency" id = "entityPaymentCurrency" ng-model = "$parent.entity.paymentCurrency.name" class="form-control" readonly/>
+		</div>
+		<span><button type = "button" ng-click = "showPaymentCurrencyModal()" class = "btn btn-primary" >Selektuj valutu placanja</button></span>
+	</div>
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "entityPlace">Mesto:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "entityPlace" id = "entityPlace" ng-model = "$parent.entity.place.name" class="form-control" readonly/>
+		</div>
+		<span><button type = "button" ng-click = "showPlaceModal()" class = "btn btn-primary" >Selektuj mesto</button></span>
+	</div>
+		
+	
+		
+	<div class = "form-group">
+		<label class = "col-md-2 control-label"></label>
+		<div class = "col-md-2">
+			<span><button type = "submit" class = "btn btn-success" >Dodaj</button></span>
+		</div>
+	</div>
+		
+		
+		
+		
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="dailyAccountBalanceModal" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Countries</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllDailyAccountBalances() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Broj racuna</th>
+					<th>Traffic date</th>
+					<th>Previous state</th>
+					<th>Traffic to benefit</th>
+					<th>Traffic to the burden</th>
+					<th>New state</th>
+				</tr>
+				<tr class="state" ng-repeat="dab in dailyAccountBalances" ng-click = "setSelectedDailyAccountBalance(dab)" ng-class = "{selected:dab.id === entity.dailyAccountBalance.id}">
+					<td>{{dab.legalEntityAccount.brojRacuna}}</td>
+					<td>{{dab.trafficDate}}</td>
+					<td>{{dab.previousState}}</td>
+					<td>{{dab.trafficToBenefit}}</td>
+					<td>{{dab.trafficToTheBurden}}</td>
+					<td>{{dab.newState}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeDailyAccountBalanceModal() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	
+	<div id="paymentTypeModal" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Countries</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllPaymentTypes() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>code</th>
+					<th>nameOfPaymentType</th>
+				</tr>
+				<tr class="state" ng-repeat="pt in paymentTypes" ng-click = "setSelectedPaymentType(pt)" ng-class = "{selected:pt.id === entity.paymentType.id}">
+					<td>{{pt.code}}</td>
+					<td>{{pt.nameOfPaymentType}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closePaymentTypeModal() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	
+	<div id="paymentCurrencyModal" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Payment currencies</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllPaymentCurrencies() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Oficijalna sifra</th>
+					<th>Name</th>
+					<th>Domicilna?</th>
+					<th>Country</th>
+				</tr>
+				<tr class="state" ng-repeat="pc in paymentCurrencies" ng-click = "setSelectedPaymentCurrency(pc)" ng-class = "{selected:pc.id === entity.paymentCurrency.id}">
+					<td>{{pc.official_code}}</td>
+					<td>{{pc.name}}</td>
+					<td>{{pc.domicilna}}</td>
+					<td>{{pc.country.name}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closePaymentCurrencyModal() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>
+		<div id="placeModal" class="modal">
+		  	<div class="modal-content">
+		    	<h3>Places</h3><hr/><br/>
+		    
+		    	<table ng-init = findAllPlaces() ng-table="stateTable" class="table table-bordered " border="1">
+					<tr>
+						<th>Ptt broj</th>
+						<th>Name</th>
+						<th>Country</th>
+					</tr>
+					<tr class="state" ng-repeat="p in places" ng-click = "setSelectedPlace(p)" ng-class = "{selected:p.id === entity.place.id}">
+						<td>{{p.pttNumber}}</td>
+						<td>{{p.name}}</td>
+						<td>{{p.country.name}}</td>
+					</tr>
+				</table>		
+				<center><button type = "button" ng-click=closePlaceModal() class="btn btn-default navbar-btn">OK</button></center>
+		 	</div>
+		</div>
