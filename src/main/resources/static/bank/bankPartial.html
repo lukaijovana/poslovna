@@ -1,0 +1,155 @@
+
+<div id="options">
+
+	<div class="toolbar btn-group" id="container">
+		<button class="search" ui-sref=".search" ng-click="deselect()"></button>
+		<button class="refresh" ui-sref="bank" ng-click="refresh()"></button>
+		<button class="back"></button>
+		<button class="help"></button>
+		&nbsp&nbsp
+		<button class="first" ng-click="firstone()"></button>
+		<button class="previous" ng-click="previous(entity)"></button>
+		<button class="next" ng-click="nextNavigation(entity)"></button>
+		<button class="last" ng-click="lastone()"></button>
+		&nbsp&nbsp
+		<button ui-sref="bank.add" class="add" ng-click="deselect()"></button>
+		<button class="delete" ng-click="delete()"></button>
+		&nbsp&nbsp
+			<button class="nextForm" data-toggle="dropdown"></button>
+			<ul class="dropdown-menu">
+				<li><button class="btn btn-primary" ng-click="nextExchangeRateList()">Lista deviznih kurseva</button></li>
+				<li><button class="btn btn-primary" ng-click="nextLegalEntityAccount()">Racun pravnog lica</button></li>
+				<li><button class="btn btn-primary" ng-click="nextInterbankTransfers()">Medjubankarski transferi</button></li>
+				
+			</ul>
+
+		
+		
+	</div>
+
+
+	<table class="table table-bordered">
+		<tr>
+			<th>Kod banke</th>
+			<th>PIB</th>
+			<th>Ime</th>
+			<th>Adresa</th>
+			<th>Email</th>
+			<th>Web</th>
+			<th>Telefon</th>
+			<th>Fax</th>
+			<th>Banka</th>
+		</tr>
+		<tr ng-repeat="entity in entities| orderBy:'id'"
+			ng-click="setSelected(entity)"
+			ng-class="{selected: entity === selectedEntity}">
+			<td>{{entity.bankCode}}</td>
+			<td>{{entity.pib}}</td>
+			<td>{{entity.name}}</td>
+			<td>{{entity.address}}</td>
+			<td>{{entity.email}}</td>
+			<td>{{entity.web}}</td>
+			<td>{{entity.phone}}</td>
+			<td>{{entity.fax}}</td>
+			<td ng-show = "entity.bank">YES</td>
+			<td ng-hide = "entity.bank">NO</td>
+			<td><button ng-click = "exportAccounts(entity)" class = "btn btn-success btn-block">Export pdf</button></td>
+
+		</tr>
+	</table>
+
+	<div class = "row" ng-show = "showUpdateForm">
+		<form class="form-horizontal" name= "form" ng-submit = "saveChanges()" method = "post">
+		
+			<div class = "form-group" >
+			<label class="col-md-2 control-label">Kod Banke:</label>
+			<div class = "col-md-2">
+				<input ng-min="3" ng-max="3"  class="form-control input-sm" ng-model="updatedEntity.bankCode" type="text"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">PIB:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="updatedEntity.pib" type="text"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Ime:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="updatedEntity.name" type="text"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Adresa:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="updatedEntity.address" type="text"> 
+			</div>
+		</div>
+			
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Email:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="updatedEntity.email"  type="email"> 
+			</div>
+		</div>
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Web:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="updatedEntity.web" type="text"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Telefon:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="updatedEntity.phone"type="text"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Fax:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="updatedEntity.fax" type="text"> 
+			</div>
+		</div>
+			
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Banka:</label>
+			<div class = "col-md-2">
+				<input type="checkbox" checked="checked" ng-model="updatedEntity.bank"/>
+			</div>
+		</div>
+			<div class = "form-group">
+				<label class = "col-md-2 control-label"></label>
+				<div class = "col-md-2">
+					<span><button type = "submit" class = "btn btn-success" >Azuriraj</button></span>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+
+	
+	
+
+	<div id="myModalNext" class="modal">
+		<div class="modal-content">
+
+			<button class="btn" ng-click="nextExchangeRateList()">Spisak deviznih kurseva</button>
+
+			<button class="btn" ng-click="nextAccount()">Racun</button>
+
+		</div>
+	</div>
+
+
+
+
+	<div>
+		<div ui-view></div>
+	</div>
