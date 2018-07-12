@@ -1,0 +1,131 @@
+<br/><br/>
+<form class="form-horizontal" ng-submit = "add()" method="post">
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Tip poruke:</label>
+			<div class = "col-md-2">
+				<input ng-min="3" ng-max="3"  class="form-control input-sm" ng-model="$parent.entity.typeOfMessage" type="text"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Datum:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.date" type="date"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Suma:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.sum" type="number"> 
+			</div>
+		</div>	
+		
+		
+		<div class = "form-group">
+			<label class = "col-md-2 control-label" for = "entityBankSender">Banka posiljaoca:</label>
+			<div class = "col-md-2">
+				<input type = "text" name = "entityBankSender" id = "entityBankSender" ng-model = "entity.senderBank.name" class="form-control" readonly/>
+			</div>
+			<span><button type = "button" ng-click = "showModalBankSender()" class = "btn btn-primary" >Selektuj banku posiljaoca</button></span>
+		</div>
+		<div class = "form-group">
+			<label class = "col-md-2 control-label" for = "entityBankSender">Banka :</label>
+			<div class = "col-md-2">
+				<input type = "text" name = "entityBank" id = "entityBank" ng-model = "entity.bank.name" class="form-control" readonly/>
+			</div>
+			<span><button type = "button" ng-click = "showModalBank()" class = "btn btn-primary" >Selektuj banku</button></span>
+		</div>
+			
+		
+		<div class = "form-group">
+				<label class = "col-md-2 control-label"></label>
+				<div class = "col-md-2">
+					<span><button type = "submit" class = "btn btn-success" >Dodaj</button></span>
+				</div>
+		</div>
+		
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="modalBankSender" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Drzave</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllBanks() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Sifra banke</th>
+					<th>PIB</th>
+					<th>Ime</th>
+					<th>Adresa</th>
+					<th>Email</th>
+					<th>Web</th>
+					<th>Telefon</th>
+					<th>Fax</th>
+					<th>Banka</th>
+				</tr>
+				<tr class="state" ng-repeat="bank in banks" ng-click = "setSelectedBankSender(bank)" ng-class = "{selected:bank === entity.senderBank || bank == entity.bank}">
+					<td>{{bank.bankCode}}</td>
+					<td>{{bank.pib}}</td>
+					<td>{{bank.name}}</td>
+					<td>{{bank.address}}</td>
+					<td>{{bank.email}}</td>
+					<td>{{bank.web}}</td>
+					<td>{{bank.phone}}</td>
+					<td>{{bank.fax}}</td>
+					<td>{{bank.bank}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeBankSenderModal() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	
+	<div id="modalBank" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Drzave</h3><hr/><br/>
+	    
+	    	<table  ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Sifra banke</th>
+					<th>PIB</th>
+					<th>Ime</th>
+					<th>Adresa</th>
+					<th>Email</th>
+					<th>Web</th>
+					<th>Telefon</th>
+					<th>Fax</th>
+					<th>Banka</th>
+				</tr>
+				<tr class="state" ng-repeat="bank in banks" ng-click = "setSelectedBank(bank)" ng-class = "{selected:bank === entity.senderBank || bank == entity.bank}">
+					<td>{{bank.bankCode}}</td>
+					<td>{{bank.pib}}</td>
+					<td>{{bank.name}}</td>
+					<td>{{bank.address}}</td>
+					<td>{{bank.email}}</td>
+					<td>{{bank.web}}</td>
+					<td>{{bank.phone}}</td>
+					<td>{{bank.fax}}</td>
+					<td>{{bank.bank}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeBankModal() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>		
