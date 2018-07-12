@@ -1,0 +1,87 @@
+<br/><br/>
+<form class="form-horizontal" ng-submit = "add()" method="post">
+
+
+		<div class = "form-group">
+			<label class = "col-md-2 control-label" for = "entityLegalEntityAccount">Racun:</label>
+			<div class = "col-md-2">
+				<input type = "text" name = "entityLegalEntityAccount" id = "entityLegalEntityAccount" ng-model = "entity.legalEntityAccount.brojRacuna" class="form-control" readonly/>
+			</div>
+			<span><button type = "button" ng-click = "showModalSearch()" class = "btn btn-primary" >Selektuj racun</button></span>
+		</div>
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Datum saobracaja:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.trafficDate" type="date"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Prethodno stanje:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.previousState" type="number"> 
+			</div>
+		</div>	
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Saobracaj u korist:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.trafficToBenefit" type="number"> 
+			</div>
+		</div>
+			
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Saobracaj na teret:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.trafficToTheBurden"  type="number"> 
+			</div>
+		</div>
+		
+		<div class = "form-group" >
+			<label class="col-md-2 control-label">Novo stanje:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="$parent.entity.newState" type="number"> 
+			</div>
+		</div>
+		
+		<div class = "form-group">
+				<label class = "col-md-2 control-label"></label>
+				<div class = "col-md-2">
+					<span><button type = "submit" class = "btn btn-success" >Dodaj</button></span>
+				</div>
+		</div>
+		
+
+</form>
+
+
+
+<div id="myModalSearch" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Racuni</h3><hr/><br/>
+	    
+	    	<table ng-init = "findAllAccounts()" ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Klijent</th>
+					<th>Banka</th>
+					<th>Broj racuna</th>
+					<th>Datum otvaranja</th>
+					<th>Valuta</th>
+					<th>Vazeci?</th>
+				</tr>
+				<tr class="state" ng-repeat="account in accounts"   ng-click = "setSelectedAccount(account)" ng-class = "{selected:account.id === entity.legalEntityAccount.id}">
+					<td ng-show = "account.client.typeOfClient=='Fizicko lice'">{{account.client.firstName}} {{account.client.lastName}}</td>
+					<td ng-hide = "account.client.typeOfClient=='Fizicko lice'">{{account.client.naziv_klijenta}}</td>
+					<td>{{account.bank.name}}</td>
+					<td>{{account.brojRacuna}}</td>
+					<td>{{account.datumOtvaranja}}</td>
+					<td>{{account.currency.name}}</td>
+					<td ng-if = "account.vazeci==true">DA</td>
+					<td ng-if = "account.vazeci==false">NE</td>
+
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeModal() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	
